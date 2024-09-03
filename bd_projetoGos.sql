@@ -61,7 +61,7 @@ CREATE TABLE `tb_cliente` (
   KEY `fk_fisico_idx` (`fk_id_fisico`),
   KEY `fk_juridico_idx` (`fk_id_juridico`),
   KEY `fk_servico_idx` (`fk_id_servico`),
-  CONSTRAINT `fk_fisico` FOREIGN KEY (`fk_id_fisico`) REFERENCES `fisico` (`id_fisico`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk_juridico` FOREIGN KEY (`fk_id_juridico`) REFERENCES `juridico` (`id_juridico`),
-  CONSTRAINT `fk_servico` FOREIGN KEY (`fk_id_servico`) REFERENCES `servico` (`id_servico`)
+  CONSTRAINT `fk_fisico` FOREIGN KEY (`fk_id_fisico`) REFERENCES `tb_fisico` (`id_fisico`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_juridico` FOREIGN KEY (`fk_id_juridico`) REFERENCES `tb_juridico` (`id_juridico`),
+  CONSTRAINT `fk_servico` FOREIGN KEY (`fk_id_servico`) REFERENCES `tb_servico` (`id_servico`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
