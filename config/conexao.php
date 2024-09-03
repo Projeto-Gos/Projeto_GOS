@@ -3,9 +3,9 @@
 if (!defined('DB_CONFIG')) {
     define('DB_CONFIG', [
         'host' => 'localhost',
-        'dbname' => '',
-        'user' => '',
-        'pass' => ''
+        'dbname' => 'bd_projetoGOS',
+        'user' => 'root',
+        'pass' => 'bdjmf'
     ]);
 }
 

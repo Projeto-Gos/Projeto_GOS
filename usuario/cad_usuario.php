@@ -42,7 +42,7 @@
 
         <!--formulário-->
         <div class="cadastro-container">
-            <form action="cadastro.php" method="post" class="cadastro-form" enctype="multipart/form-data">
+            <form action="" method="post" class="cadastro-form" enctype="multipart/form-data">
     
                 <h2>Cadastro</h2>
     
@@ -66,12 +66,78 @@
                     <i class='bx bxs-lock-alt' style='color:#fffcf2'></i>
                 </div>
     
-                <button type="submit" class="cadastro-btn">Cadastrar</button>
+                <button type="submit" class="cadastro-btn" name="cadastrar">Cadastrar</button>
     
                 <div class="login">
                     <p>Já possui uma conta? <a href="login.html">Entrar</a></p>
                 </div>
             </form>
+            <?php
+                include_once("config/conexao.php");
+                //VERIFICAR FORM
+                if (isset($_POST['cadastrar'])){
+                    $nome = $_POST['nome'];
+                    $email = $_POST['email'];
+                    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+
+                    //VERIFICA FOTO
+                    if (!empty($_FILES['foto']['name'])){
+                        $formatosPermitidos = array("png", "jpg", "jpeg");
+                        $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+
+                        //VERIFICA EXTENSÃO
+                        if (in_array(strtolower($extensao), $formatosPermitidos)){
+                            $pasta = "uploads/user/";
+                            $temporario = $_FILES['foto']['tmp_name'];
+                            $novoNome = uniqid() . ".$extensao";
+
+                            //MOVE PARA O DIRETÓRIO
+                            if (move_uploaded_file($temporario, $pasta . $novoNome)){
+                                //SUCESSO UPLOAD
+                            }
+
+                            else{
+                                //MSG DE ERROR NO FORMATO
+                                exit(); // TERMINAR A EXECUÇÃO
+                            }
+
+                        }
+
+                        else{
+                            //DEFINIR AVATAR PADRÃO CASO NÃO HAJA IMAGEM
+                            $novoNome = 'avatar_padrao.jpg';      
+                        }
+
+                        //PREPARANDO CONSULTA SQL
+                        $cadastro = "INSERT INTO tb_user(foto_user, nome_user, email_user, senha_user) VALUES (:foto, :nome, :email, :senha)";
+                        
+                        try{
+                            $result = $conect->prepare($cadastro);
+                            $result->bindParam(':nome', $nome, PDO::PARAM_STR);
+                            $result->bindParam(':email', $email, PDO::PARAM_STR);
+                            $result->bindParam(':senha', $senha, PDO::PARAM_STR);
+                            $result->bindParam(':foto', $novoNome, PDO::PARAM_STR);
+                            $result->execute();
+                            
+                            $contar = $result->rowCount();
+
+                            if ($contar > 0) {
+                               //MSG DE "DADOS INSERIDOS"
+                            }
+
+                            else{
+                                //MSG DE "DADOS NÃO INSERIDOS"
+                            }
+                        }
+                        catch(PDOException $e){
+                            //MSG DE ERROR
+                            error_log("ERRO DE PDO: " . $e->getMessage());
+                            //MSG DE ERROR AO TENTAR INSERIR OS DADOS
+                        }
+                    }
+
+                }
+            ?>
         </div>
         <!--animação-->
         <div class="animacao-cadastro">
