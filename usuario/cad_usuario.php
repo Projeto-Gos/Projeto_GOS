@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOS</title>
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/cad_user.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/cad_user.css">
 
     <!--box link icons-->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
     <!--remix link icons-->
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css">
     
 
 </head>
@@ -21,12 +20,12 @@
 
     <header>
         <nav class="navbar">
-            <a href="index.html" class="logo">
-                <img src="static/img/logo_coral.svg" alt="Logo" />
+            <a href="index.php" class="logo">
+                <img src="../static/img/logo_coral.svg" alt="Logo" />
             </a>
             
             <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
+                <li><a href="index.php">Início</a></li>
                 <li><a href="#about">Atividades</a></li>
                 <li><a href="#services">Cadastros</a></li>
                 <li><a href="#contact">Relatório</a></li>
@@ -47,7 +46,7 @@
                 <h2>Cadastro</h2>
     
                 <div class="form-group">
-                    <input type="file" id="foto" name="foto" accept="image/*" required>
+                    <input type="file" id="foto" name="foto">
                     <i class='bx bxs-camera' style='color:#fffcf2'></i>
                 </div>
     
@@ -69,16 +68,22 @@
                 <button type="submit" class="cadastro-btn" name="cadastrar">Cadastrar</button>
     
                 <div class="login">
-                    <p>Já possui uma conta? <a href="login.html">Entrar</a></p>
+                    <p>Já possui uma conta? <a href="login.php">Entrar</a></p>
                 </div>
             </form>
             <?php
-                include_once("config/conexao.php");
+                include_once('../config/conexao.php');
                 //VERIFICAR FORM
                 if (isset($_POST['cadastrar'])){
                     $nome = $_POST['nome'];
                     $email = $_POST['email'];
                     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+
+                    // Define o caminho absoluto para o diretório de upload
+                    $pasta = __DIR__ . "/../../uploads/user/"; 
+                    
+                    // Define o nome do arquivo para o banco de dados
+                    $novoNome = 'avatar_padrao.jpg'; // Define o avatar padrão
 
                     //VERIFICA FOTO
                     if (!empty($_FILES['foto']['name'])){
@@ -87,29 +92,34 @@
 
                         //VERIFICA EXTENSÃO
                         if (in_array(strtolower($extensao), $formatosPermitidos)){
-                            $pasta = "uploads/user/";
                             $temporario = $_FILES['foto']['tmp_name'];
-                            $novoNome = uniqid() . ".$extensao";
 
-                            //MOVE PARA O DIRETÓRIO
-                            if (move_uploaded_file($temporario, $pasta . $novoNome)){
-                                //SUCESSO UPLOAD
+                            if (file_exists($temporario)) {
+                                // Gera um nome único para o arquivo
+                                $novoNome = uniqid() . ".$extensao";
+
+                                //MOVE PARA O DIRETÓRIO
+                                if (move_uploaded_file($temporario, $pasta . $novoNome)){
+                                 //SUCESSO UPLOAD
+                                 echo "<h1>Upload realizado com sucesso!</h1>";
+                                }
+
+                                else{
+                                    //MSG DE ERROR NO FORMATO
+                                    echo "<h1>Erro ao mover o arquivo: " . error_get_last()['message'] . "</h1>";
+                                    exit(); // TERMINAR A EXECUÇÃO
+                                }
                             }
 
-                            else{
-                                //MSG DE ERROR NO FORMATO
-                                exit(); // TERMINAR A EXECUÇÃO
+                            else {
+                                echo "<h1>Formato de arquivo não permitido.</h1>";
+                                exit(); // Termina a execução em caso de erro
                             }
-
+                    
                         }
-
-                        else{
-                            //DEFINIR AVATAR PADRÃO CASO NÃO HAJA IMAGEM
-                            $novoNome = 'avatar_padrao.jpg';      
-                        }
-
+                        
                         //PREPARANDO CONSULTA SQL
-                        $cadastro = "INSERT INTO tb_user(foto_user, nome_user, email_user, senha_user) VALUES (:foto, :nome, :email, :senha)";
+                        $cadastro = "INSERT INTO tb_user (foto_user, nome_user, email_user, senha_user) VALUES (:foto, :nome, :email, :senha)";
                         
                         try{
                             $result = $conect->prepare($cadastro);
@@ -123,10 +133,12 @@
 
                             if ($contar > 0) {
                                //MSG DE "DADOS INSERIDOS"
+                               echo "<h1>Img foi inserido</h1>";
                             }
 
                             else{
                                 //MSG DE "DADOS NÃO INSERIDOS"
+                                echo "<h1>Img não foi inserido</h1>";
                             }
                         }
                         catch(PDOException $e){
@@ -141,7 +153,7 @@
         </div>
         <!--animação-->
         <div class="animacao-cadastro">
-            <img src="static/gif/cad_user.svg" alt="Animação de Cadastro">
+            <img src="../static/gif/cad_user.svg" alt="Animação de Cadastro">
         </div>
     </section>
     
