@@ -1,9 +1,9 @@
 CREATE TABLE `tb_user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
-  `foto_user` varchar(150) NOT NULL,
-  `nome_user` varchar(80) NOT NULL,
-  `email_user` varchar(100) NOT NULL,
-  `senha_user` varchar(255) NOT NULL,  -- Aumentado para suporte a hashes de senha mais longos
+  `foto_user` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nome_user` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email_user` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `senha_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,  -- Aumentado para suporte a hashes de senha mais longos
   PRIMARY KEY (`id_user`),
   UNIQUE (`email_user`)  -- Garante que o e-mail seja único
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

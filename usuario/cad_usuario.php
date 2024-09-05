@@ -72,83 +72,85 @@
                 </div>
             </form>
             <?php
-                include_once('../config/conexao.php');
-                //VERIFICAR FORM
-                if (isset($_POST['cadastrar'])){
-                    $nome = $_POST['nome'];
-                    $email = $_POST['email'];
-                    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+               include_once('../config/conexao.php');
 
-                    // Define o caminho absoluto para o diretório de upload
-                    $pasta = __DIR__ . "/../../uploads/user/"; 
-                    
-                    // Define o nome do arquivo para o banco de dados
-                    $novoNome = 'avatar_padrao.jpg'; // Define o avatar padrão
-
-                    //VERIFICA FOTO
-                    if (!empty($_FILES['foto']['name'])){
-                        $formatosPermitidos = array("png", "jpg", "jpeg");
-                        $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
-
-                        //VERIFICA EXTENSÃO
-                        if (in_array(strtolower($extensao), $formatosPermitidos)){
-                            $temporario = $_FILES['foto']['tmp_name'];
-
-                            if (file_exists($temporario)) {
-                                // Gera um nome único para o arquivo
-                                $novoNome = uniqid() . ".$extensao";
-
-                                //MOVE PARA O DIRETÓRIO
-                                if (move_uploaded_file($temporario, $pasta . $novoNome)){
-                                 //SUCESSO UPLOAD
-                                 echo "<h1>Upload realizado com sucesso!</h1>";
-                                }
-
-                                else{
-                                    //MSG DE ERROR NO FORMATO
-                                    echo "<h1>Erro ao mover o arquivo: " . error_get_last()['message'] . "</h1>";
-                                    exit(); // TERMINAR A EXECUÇÃO
-                                }
-                            }
-
-                            else {
-                                echo "<h1>Formato de arquivo não permitido.</h1>";
-                                exit(); // Termina a execução em caso de erro
-                            }
-                    
-                        }
-                        
-                        //PREPARANDO CONSULTA SQL
-                        $cadastro = "INSERT INTO tb_user (foto_user, nome_user, email_user, senha_user) VALUES (:foto, :nome, :email, :senha)";
-                        
-                        try{
-                            $result = $conect->prepare($cadastro);
-                            $result->bindParam(':nome', $nome, PDO::PARAM_STR);
-                            $result->bindParam(':email', $email, PDO::PARAM_STR);
-                            $result->bindParam(':senha', $senha, PDO::PARAM_STR);
-                            $result->bindParam(':foto', $novoNome, PDO::PARAM_STR);
-                            $result->execute();
-                            
-                            $contar = $result->rowCount();
-
-                            if ($contar > 0) {
-                               //MSG DE "DADOS INSERIDOS"
-                               echo "<h1>Img foi inserido</h1>";
-                            }
-
-                            else{
-                                //MSG DE "DADOS NÃO INSERIDOS"
-                                echo "<h1>Img não foi inserido</h1>";
-                            }
-                        }
-                        catch(PDOException $e){
-                            //MSG DE ERROR
-                            error_log("ERRO DE PDO: " . $e->getMessage());
-                            //MSG DE ERROR AO TENTAR INSERIR OS DADOS
-                        }
-                    }
-
-                }
+               //VERIFICAR FORM
+               if (isset($_POST['cadastrar'])){
+                   $nome = $_POST['nome'];
+                   $email = $_POST['email'];
+                   $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+               
+                   // Define o caminho absoluto para o diretório de upload
+                   $pasta = __DIR__ . "/../uploads/user/"; 
+                   
+                   // Define o nome do arquivo para o banco de dados
+                   $novoNome = '';
+               
+                   //VERIFICA FOTO
+                   if (isset($_FILES['foto']) && !empty($_FILES['foto']['name'])){
+                       $formatosPermitidos = array("png", "jpg", "jpeg");
+                       $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+               
+                       //VERIFICA EXTENSÃO
+                       if (in_array(strtolower($extensao), $formatosPermitidos)){
+                           $temporario = $_FILES['foto']['tmp_name'];
+               
+                           if (is_uploaded_file($temporario)) {
+                               // Gera um nome único para o arquivo
+                               $novoNome = uniqid() . ".$extensao";
+               
+                               //MOVE PARA O DIRETÓRIO
+                               if (move_uploaded_file($temporario, $pasta . $novoNome)){
+                                //SUCESSO UPLOAD
+                                //echo "<h1>Upload realizado com sucesso!</h1>";
+                               }
+               
+                               else{
+                                   //MSG DE ERROR NO FORMATO
+                                   //echo "<h1>Erro ao mover o arquivo: " . error_get_last()['message'] . "</h1>";
+                                   exit(); // TERMINAR A EXECUÇÃO
+                               }
+                           }
+               
+                           else {
+                               //echo "<h1>Formato de arquivo não permitido.</h1>";
+                               exit(); // Termina a execução em caso de erro
+                           }
+                       
+                       }
+                   } else {
+                       $novoNome = 'avatar_padrao.jpg'; // Redefine o nome da foto para o padrão
+                   }
+               
+                   //PREPARANDO CONSULTA SQL
+                   $cadastro = "INSERT INTO tb_user (foto_user, nome_user, email_user, senha_user) VALUES (:foto, :nome, :email, :senha)";
+                   
+                   try{
+                       $result = $conect->prepare($cadastro);
+                       $result->bindParam(':nome', $nome, PDO::PARAM_STR);
+                       $result->bindParam(':email', $email, PDO::PARAM_STR);
+                       $result->bindParam(':senha', $senha, PDO::PARAM_STR);
+                       $result->bindParam(':foto', $novoNome, PDO::PARAM_STR);
+                       $result->execute();
+                       
+                       $contar = $result->rowCount();
+               
+                       if ($contar > 0) {
+                          //MSG DE "DADOS INSERIDOS"
+                         // echo "<h1>Img foi inserido</h1>";
+                       }
+               
+                       else{
+                           //MSG DE "DADOS NÃO INSERIDOS"
+                          // echo "<h1>Img não foi inserido</h1>";
+                       }
+                   }
+                   catch(PDOException $e){
+                       //MSG DE ERROR
+                       error_log("ERRO DE PDO: " . $e->getMessage());
+                       //MSG DE ERROR AO TENTAR INSERIR OS DADOS
+                   }
+               }
             ?>
         </div>
         <!--animação-->
