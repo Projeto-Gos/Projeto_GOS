@@ -17,25 +17,7 @@
 </head>
 
 <body>
-
-    <header>
-        <nav class="navbar">
-            <a href="index.php" class="logo">
-                <img src="../static/img/logo_coral.svg" alt="Logo" />
-            </a>
-            
-            <ul class="nav-links">
-                <li><a href="index.php">Início</a></li>
-                <li><a href="#about">Atividades</a></li>
-                <li><a href="#services">Cadastros</a></li>
-                <li><a href="#contact">Relatório</a></li>
-            </ul>
-
-            <div class="entrar">
-                <a href="login.html">Entrar</a> 
-            </div>
-        </nav>
-    </header>
+    <?php include_once('../include/header.php') ?>
 
     <section>
 
@@ -158,51 +140,7 @@
             <img src="../static/gif/cad_user.svg" alt="Animação de Cadastro">
         </div>
     </section>
-    
-    <footer>
-        <div class="footer-container">
-            <div class="footer-box">
-                <h3>GOS</h3>
-                <p>É tudo uma questão de seus sonhos.</p>
-                <div class="icons-sociais">
-                    <a href="#"><i class="bx bxl-instagram"></i></a>
-                    <a href="#"><i class="bx bxl-facebook"></i></a>
-                    <a href="#"><i class="bx bxl-whatsapp"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-box">
-                <h3>Navegação</h3>
-                <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Atividades</a></li>
-                    <li><a href="#">Cadastros</a></li>
-                    <li><a href="#">Relatório</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-box">
-                <h3>Suporte</h3>
-                <ul>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Central de Ajuda</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-box">
-                <h3>Inscreva-se</h3>
-                <p>Digite seu e-mail para ser notificado sobre nossas notícias</p>
-                <div class="inscreva-form">
-                    <input type="email" placeholder="Seu email" required>
-                    <button type="submit"><i class="bx bx-envelope" style="color: #191B24; font-size: 15px;" ></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="footer-btn">
-            <p>© 2024 todos os direitos reservados</p>
-        </div>
-    </footer>
+    <?php include_once('../include/footer.php') ?>
 </body>
 </html>
     
