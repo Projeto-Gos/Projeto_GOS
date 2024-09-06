@@ -16,6 +16,7 @@ if (!isset($_SESSION['loginUser'])) {
 
 include_once('../config/conexao.php');
 
+
 // Obtém o email do usuário logado a partir da sessão
 $usuarioLogado = $_SESSION['loginUser'];
 

@@ -46,7 +46,6 @@
                 <div class="cadastro">
                     <p>Não possui uma conta? <a href="cad_usuario.php">Cadastre-se</a></p>
                 </div>
-
             </form>
             <?php
                 include_once('../config/conexao.php');
@@ -58,8 +57,7 @@
                         echo '<strong>Erro ao Acessar o sistema!</strong> Efetue o login ';
                         
                     } elseif ($acao == 'sair') {
-                        echo '<strong>Você acabou de sair!</strong>';
-                        
+                        echo '<strong>Você acabou de sair!</strong>';    
                     }
                 }
                 

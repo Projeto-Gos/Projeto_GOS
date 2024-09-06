@@ -43,4 +43,5 @@
             <p>© 2024 todos os direitos reservados</p>
         </div>
     </footer>
+    
     <script src="../static/js/script.js"></script>
