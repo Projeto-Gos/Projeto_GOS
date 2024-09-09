@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -84,9 +83,9 @@
                                     $_SESSION['loginUser'] = $login;
                                     $_SESSION['senhaUser'] = $user['id_user'];
                 
-                                    echo '<strong>Logado com sucesso!</strong> Você será redirecionado';
+                                    //echo '<strong>Logado com sucesso!</strong> Você será redirecionado';
                 
-                                    header("Refresh: 2; url=../paginas/home.php?acao=bemvindo");
+                                    header("Refresh: 0; url=../paginas/home.php?acao=home");
                                 } else {
                                     echo '<strong>Erro!</strong> Senha incorreta, tente novamente.';
                                     header("Refresh: 5; url=../usuario/login.php");
@@ -98,10 +97,10 @@
                         } catch (PDOException $e) {
                             // Log the error instead of displaying it to the user
                             error_log("ERRO DE LOGIN DO PDO: " . $e->getMessage());
-                            echo '<strong>Erro!</strong> Ocorreu um erro ao tentar fazer login. Por favor, tente novamente mais tarde.';
+                            //echo '<strong>Erro!</strong> Ocorreu um erro ao tentar fazer login. Por favor, tente novamente mais tarde.';
                         }
                     } else {
-                        echo '<strong>Erro!</strong> Todos os campos são obrigatórios.';
+                       // echo '<strong>Erro!</strong> Todos os campos são obrigatórios.';
                     }
                 }
             ?>
