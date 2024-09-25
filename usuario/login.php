@@ -1,10 +1,19 @@
+<?php
+  session_start(); 
+
+  // Verifica se o usuário está autenticado (verifica se a sessão está ativa e se o usuário está logado)
+  if (isset($_SESSION['loginUser']) && $_SESSION['senhaUser'] === true) {
+      // Redireciona para a página home
+      header("Location: ../paginas/home.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOS</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style_naoLogado.css">
     <link rel="stylesheet" href="../static/css/login.css">
 
     <!--box link icons-->
@@ -12,13 +21,21 @@
 
     <!--remix link icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css">
-    
-
 </head>
 
 <body>
 
-    <?php include_once('../include/header.php') ?>
+    <header>
+        <nav class="navbar">
+                <a href="../index.php" class="logo">
+                    <img src="../static/img/logo_coral.svg" alt="Logo">
+                </a>
+
+                <div class="entrar">
+                    <a href="../usuario/login.php">Entrar</a> 
+                </div>
+        </nav>
+    </header>
 
     <section>
         <div class="animacao-login">
@@ -53,7 +70,7 @@
                 if (isset($_GET['acao'])) {
                     $acao = $_GET['acao'];
                     if ($acao == 'negado') {
-                        echo '<strong>Erro ao Acessar o sistema!</strong> Efetue o login ';
+                        echo '<script>alert("Erro ao Acessar o sistema! Efetue o login")</script>';
                         
                     } elseif ($acao == 'sair') {
                         echo '<strong>Você acabou de sair!</strong>';    
@@ -87,12 +104,12 @@
                 
                                     header("Refresh: 0; url=../paginas/home.php?acao=home");
                                 } else {
-                                    echo '<strong>Erro!</strong> Senha incorreta, tente novamente.';
-                                    header("Refresh: 5; url=../usuario/login.php");
+                                    //echo '<strong>Erro!</strong> Senha incorreta, tente novamente.';
+                                    header("Refresh: 1; url=login.php?acao=negado");
                                 }
                             } else {
-                                echo '<strong>Erro!</strong> E-mail não encontrado, verifique seu login ou faça o cadastro.';
-                                header("Refresh: 5; url=../usuario/login.php");
+                                //echo '<strong>Erro!</strong> E-mail não encontrado, verifique seu login ou faça o cadastro.';
+                                header("Refresh: 1; url=login.php?acao=negado");
                             }
                         } catch (PDOException $e) {
                             // Log the error instead of displaying it to the user
@@ -106,6 +123,50 @@
             ?>
         </div>
     </section>
-    <?php include_once('../include/footer.php') ?>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h3>GOS</h3>
+                <p>É tudo uma questão de seus sonhos.</p>
+                <div class="icons-sociais">
+                    <a href="#"><i class="bx bxl-instagram"></i></a>
+                    <a href="#"><i class="bx bxl-facebook"></i></a>
+                    <a href="#"><i class="bx bxl-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Atividades</a></li>
+                    <li><a href="#">Cadastros</a></li>
+                    <li><a href="#">Relatório</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Suporte</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Inscreva-se</h3>
+                <p>Digite seu e-mail para ser notificado sobre nossas notícias</p>
+                <div class="inscreva-form">
+                    <input type="email" placeholder="Seu email" required>
+                    <button type="submit"><i class="bx bx-envelope" style="color: #191B24; font-size: 15px;" ></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-btn">
+            <p>© 2024 todos os direitos reservados</p>
+        </div>
+    </footer>
 </body>
 </html>

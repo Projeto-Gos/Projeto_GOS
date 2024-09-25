@@ -1,0 +1,108 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex:1
+}
+ 
+.container {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    padding: 0 15px;
+    gap: 20px;
+    height: 600px; 
+}
+
+section {
+    width: 600px;
+    background-color: var(--white-flor);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+.profile {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: center;
+}
+  
+.profile-image {
+    margin-right: 20px;
+}
+  
+.profile-image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-bottom: 50px;  
+}
+  
+.profile-info h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 25px;
+}
+  
+.profile-info p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+  
+.edit-profile h2 {
+    margin-top: 0;
+    margin-bottom: 35px;
+    color: var(--coral);
+    font-size: 30px;
+}
+  
+.edit-profile form {
+    margin-top: 20px;
+}
+  
+.edit-profile form div {
+    margin-bottom: 30px;
+}
+  
+  .edit-profile label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  .edit-profile input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+.bnt-perfil {
+    margin-top: 75px;
+    justify-content: end;
+    display: flex;
+}
+
+.bnt-perfil button {
+    background-color: var(--coral);
+    color: var(--black-passas);
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+.bnt-perfil button:hover{
+    background-color: var(--prata);
+    color: var(--black-passas);
+}
+

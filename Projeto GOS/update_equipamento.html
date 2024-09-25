@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOS</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/update_form.css">
+
+    <!--box link icons-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!--remix link icons-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="static/img/logo_coral.svg" alt="Logo" />
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cad_atividade.html">Atividades</a></li>
+                <li class="dropdown">
+                    <a href="#">Cadastros</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cad_clientes.html">Clientes</a></li>
+                        <li><a href="cad_equipamento.html">Equipamentos</a></li>
+                        <li><a href="cad_servicos.html">Serviços</a></li>
+                        <li><a href="cad_funcionario.html">Funcionários</a></li>
+                    </ul>
+                </li>
+                <li><a href="dashboad.html">Relatório</a></li>
+            </ul>
+
+            <ul class="dropdown">
+                <li>
+                    <a href="#" class="profile-menu">
+                        <img src="static/img/avatar_padrao.jpg" alt="Foto de Perfil" class="profile-pic">
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="perfil.html">Configurações</a></li>
+                        <li><a href="perfil.html">Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <!--formulário-->
+        <div class="form-container">
+            <h1>Ativo</h1>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="brand">Marca</label>
+                    <input type="text" id="marca" name="marca" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="model">Modelo</label>
+                    <input type="text" id="model" name="model" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="serial">Número de Série</label>
+                    <input type="text" id="serial" name="serial" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="additional-info">Informações adicionais</label>
+                    <textarea id="additional-info" name="additional-info"></textarea>
+                </div>
+        
+                <button type="submit" class="btn-save">Editar</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h3>GOS</h3>
+                <p>É tudo uma questão de seus sonhos.</p>
+                <div class="icons-sociais">
+                    <a href="#"><i class="bx bxl-instagram"></i></a>
+                    <a href="#"><i class="bx bxl-facebook"></i></a>
+                    <a href="#"><i class="bx bxl-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Atividades</a></li>
+                    <li><a href="#">Cadastros</a></li>
+                    <li><a href="#">Relatório</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Suporte</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Inscreva-se</h3>
+                <p>Digite seu e-mail para ser notificado sobre nossas notícias</p>
+                <div class="inscreva-form">
+                    <input type="email" placeholder="Seu email" required>
+                    <button type="submit"><i class="bx bx-envelope" style="color: #191B24; font-size: 15px;" ></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-btn">
+            <p>© 2024 todos os direitos reservados</p>
+        </div>
+    </footer>

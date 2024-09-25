@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOS</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/cad_table.css">
+
+    <!--box link icons-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!--remix link icons-->
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="static/img/logo_coral.svg" alt="Logo" />
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cad_atividade.html">Atividades</a></li>
+                <li class="dropdown">
+                    <a href="#">Cadastros</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cad_clientes.html">Clientes</a></li>
+                        <li><a href="cad_equipamento.html">Equipamentos</a></li>
+                        <li><a href="cad_servicos.html">Serviços</a></li>
+                        <li><a href="cad_funcionario.html">Funcionários</a></li>
+                    </ul>
+                </li>
+                <li><a href="dashboad.html">Relatório</a></li>
+            </ul>
+
+            <ul class="dropdown">
+                <li>
+                    <a href="#" class="profile-menu">
+                        <img src="static/img/avatar_padrao.jpg" alt="Foto de Perfil" class="profile-pic">
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="perfil.html">Configurações</a></li>
+                        <li><a href="perfil.html">Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <!--titulo-->
+        <div class="lista">
+            <div class="box-texto">
+                <h1>Cadastro de Ativos</h1>
+        
+                <a href="add_equipamento.html">
+                    <button class="btn-novo-cliente">Novo Equipamento</button>
+                </a>
+            </div>
+    
+            <!--cadastros-->
+            <div class="box-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Número de Série</th>
+                            <th>Nome</th>
+                            <th>Pertencente</th>
+                            <th>Modelo</th>
+                            <th>Editar</th>
+                            <th>Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Avaliação técnica</td>
+                            <td>Cliente Exemplo 2</td>
+                            <td>xxxx</td>
+                            <td><a href="update_servicos.html"><i class='bx bxs-pencil edit-icon'></i></a></i></td>
+                            <td><i class='bx bxs-trash delete-icon'></i></td>
+                        <tr>
+                            <td>2</td>
+                            <td>Realocação do equipamento</td>
+                            <td>Cliente Exemplo 2</td>
+                            <td>xxxx</td>
+                            <td><a href="update_servicos.html"><i class='bx bxs-pencil edit-icon'></i></a></i></td>
+                            <td><i class='bx bxs-trash delete-icon'></i></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Recarga de gás</td>
+                            <td>Cliente Exemplo 2</td>
+                            <td>xxxx</td>
+                            <td><a href="update_servicos.html"><i class='bx bxs-pencil edit-icon'></i></a></i></td>
+                            <td><i class='bx bxs-trash delete-icon'></i></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Regulagem do nível</td>
+                            <td>Cliente Exemplo 2</td>
+                            <td>xxxx</td>
+                            <td><a href="update_servicos.html"><i class='bx bxs-pencil edit-icon'></i></a></i></td>
+                            <td><i class='bx bxs-trash delete-icon'></i></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Troca de peças</td>
+                            <td>Cliente Exemplo 2</td>
+                            <td>xxxx</td>
+                            <td><a href="update_servicos.html"><i class='bx bxs-pencil edit-icon'></i></a></i></td>
+                            <td><i class='bx bxs-trash delete-icon'></i></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Configuração inicial</td>
+                            <td>Cliente Exemplo 2</td>
+                            <td>xxxx</td>
+                            <td><a href="update_servicos.html"><i class='bx bxs-pencil edit-icon'></i></a></i></td>
+                            <td><i class='bx bxs-trash delete-icon'></i></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Higienização do filtro</td>
+                            <td>Cliente Exemplo 2</td>
+                            <td>xxxx</td>
+                            <td><a href="update_servicos.html"><i class='bx bxs-pencil edit-icon'></i></a></i></td>
+                            <td><i class='bx bxs-trash delete-icon'></i></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Limpeza básica</td>
+                            <td>Cliente Exemplo 2</td>
+                            <td>xxxx</td>
+                            <td><a href="update_servicos.html"><i class='bx bxs-pencil edit-icon'></i></a></i></td>
+                            <td><i class='bx bxs-trash delete-icon'></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <!--exportar-->
+            <div class="export-buttons">
+                <button class="export-btn">COPIAR</button>
+                <button class="export-btn">CSV</button>
+                <button class="export-btn">EXCEL</button>
+                <button class="export-btn">PDF</button>
+                <button class="export-btn">PRINT</button>
+            </div>
+        </div>
+        
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h3>GOS</h3>
+                <p>É tudo uma questão de seus sonhos.</p>
+                <div class="icons-sociais">
+                    <a href="#"><i class="bx bxl-instagram"></i></a>
+                    <a href="#"><i class="bx bxl-facebook"></i></a>
+                    <a href="#"><i class="bx bxl-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Atividades</a></li>
+                    <li><a href="#">Cadastros</a></li>
+                    <li><a href="#">Relatório</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Suporte</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Inscreva-se</h3>
+                <p>Digite seu e-mail para ser notificado sobre nossas notícias</p>
+                <div class="inscreva-form">
+                    <input type="email" placeholder="Seu email" required>
+                    <button type="submit"><i class="bx bx-envelope" style="color: #191B24; font-size: 15px;" ></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-btn">
+            <p>© 2024 todos os direitos reservados</p>
+        </div>
+    </footer>
+
+</body>
+</html>

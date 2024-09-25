@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOS</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/add_atividade.css">
+
+    <!--box link icons-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!--remix link icons-->
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="static/img/logo_coral.svg" alt="Logo" />
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cad_atividade.html">Atividades</a></li>
+                <li class="dropdown">
+                    <a href="#">Cadastros</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cad_clientes.html">Clientes</a></li>
+                        <li><a href="cad_equipamento.html">Equipamentos</a></li>
+                        <li><a href="cad_servicos.html">Serviços</a></li>
+                        <li><a href="cad_funcionario.html">Funcionários</a></li>
+                    </ul>
+                </li>
+                <li><a href="dashboad.html">Relatório</a></li>
+            </ul>
+
+            <ul class="dropdown">
+                <li>
+                    <a href="#" class="profile-menu">
+                        <img src="static/img/avatar_padrao.jpg" alt="Foto de Perfil" class="profile-pic">
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="perfil.html">Configurações</a></li>
+                        <li><a href="perfil.html">Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        
+        <div class="form-container">
+            <h1>Nova Atividade</h1>
+            <form>
+
+                <!--titulo e status-->
+                <div class="form-group">
+                    <div class="box-titulo_status">
+                        <div class="titulo">
+                            <label for="name">Título</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="status">
+                            <label for="cliente">Status</label>
+                            <select id="clientes" name="clientes" required>
+                                <option value="" disabled selected>Selecione o Status</option>
+                                <option value="exemple1" class="finalizado">Finalizado</option>
+                                <option value="exemple2" id="andamento">Em Andamento</option>
+                                <option value="exemple3" id="atrasado">Atrasado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!--datas-->
+                <div class="form-group" id="data">
+                    <div class="box-data">
+                        <div class="data-inicial">
+                            <label for="data">Data Inicial</label>
+                            <input type="date" id="data-inicial" name="data-inicial" required>
+                        </div>
+
+                        <div class="data-final">
+                            <label for="data">Data Final</label>
+                            <input type="date" id="data-final" name="data-final" required>
+                        </div>  
+                    </div>
+                </div>
+                
+                <!--clientes-->
+                <div class="form-group">
+                    <label for="cliente">Cliente</label>
+
+                    <div class="box-cliente" >
+                        <select id="clientes" name="clientes" required>
+                            <option value="" disabled selected>Selecione um Cliente</option>
+                            <option value="exemple1">Pessoa 1</option>
+                            <option value="exemple2">Pessoa 2</option>
+                            <option value="exemple3">Pessoa 3</option>
+                        </select>
+    
+                        <div class="abrir-modal">
+                            <button onclick="abrirModalCliente()"><i class='bx bx-plus' style="font-size: 20px;"></i></button>
+                        </div>
+                    </div>
+                </div>
+        
+                <!--responsável-->
+                <div class="form-group">
+                    <label for="equipamento">Responsável</label>
+
+                    <div class="box-funcionario">
+                        <select id="funcionario" name="funcionario" required>
+                            <option value="" disabled selected>Selecione um Responsável</option>
+                            <option value="exemple1">Responsável 1</option>
+                            <option value="exemple2">Responsável 2</option>
+                            <option value="exemple3">Responsável 3</option>
+                        </select>
+
+                        <div class="abrir-modal">
+                            <button onclick="abrirModalFuncionarios()"><i class='bx bx-plus' style="font-size: 20px;"></i></button>
+                        </div>
+                    </div>
+                </div>
+        
+                <!--instruções-->
+                <div class="form-group">
+                    <label for="additional-info">Instruções </label>
+                    <textarea id="additional-info" name="additional-info"></textarea>
+                </div>
+
+                <!--preço-->
+                <div class="form-group" id="form-box">
+                    <div class="box-preco">
+                        <label for="servico">Serviço</label>
+                        <div class="box-servico">
+                            <select id="servico" name="servico" required>
+                                <option value="" disabled selected>Selecione um Serviço</option>
+                                <option value="exemple1">Serviço 1</option>
+                                <option value="exemple2">Serviço 2</option>
+                                <option value="exemple3">Serviço 3</option>
+                            </select>
+                            <div class="abrir-modal">
+                                <button onclick="abrirModalEquipamento()"><i class='bx bx-plus' style="font-size: 20px;"></i></button>
+                            </div>
+                        </div> 
+                    </div>
+                
+                    <div class="box-preco">
+                        <label for="equipamento">Equipamento</label>
+                        <div class="box-equipamento">
+                            <select id="servico" name="servico" required>
+                                <option value="" disabled selected>Selecione um Equipamento</option>
+                                <option value="exemple1">Equipamento 1</option>
+                                <option value="exemple2">Equipamento 2</option>
+                                <option value="exemple3">Equipamento 3</option>
+                            </select>
+                            <div class="abrir-modal" class="tooltip">
+                                <button onclick="abrirModalEquipamento()"><i class='bx bx-plus' style="font-size: 20px;"></i></button>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                
+
+                <button type="submit" class="btn-save">Salvar</button>
+
+            </form>
+        </div>       
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h3>GOS</h3>
+                <p>É tudo uma questão de seus sonhos.</p>
+                <div class="icons-sociais">
+                    <a href="#"><i class="bx bxl-instagram"></i></a>
+                    <a href="#"><i class="bx bxl-facebook"></i></a>
+                    <a href="#"><i class="bx bxl-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Atividades</a></li>
+                    <li><a href="#">Cadastros</a></li>
+                    <li><a href="#">Relatório</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Suporte</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-box">
+                <h3>Inscreva-se</h3>
+                <p>Digite seu e-mail para ser notificado sobre nossas notícias</p>
+                <div class="inscreva-form">
+                    <input type="email" placeholder="Seu email" required>
+                    <button type="submit"><i class="bx bx-envelope" style="color: #191B24; font-size: 15px;" ></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-btn">
+            <p>© 2024 todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    
+    <!-- MODAIS -->
+    <div id="modalCliente" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalCliente()">&times;</span>
+            <h2>Cadastro rápido de novo cliente</h2>
+            <form>
+                <div class="form-type">
+                    <label class="custom-radio">
+                        <input type="radio" name="example" value="option1">
+                        <span>Pessoa Física</span>
+                    </label>
+                    
+                    <label class="custom-radio">
+                        <input type="radio" name="example" value="option2">
+                        <span>Pessoa Jurídica</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="brand">Email</label>
+                    <input type="email" id="marca" name="marca" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="model">Telefone</label>
+                    <input type="tel" id="model" name="model" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="serial">CPF/CNPJ</label>
+                    <input type="text" id="serial" name="serial" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="additional-info">Endereço</label>
+                    <textarea id="additional-info" name="additional-info"></textarea>
+                </div>
+                
+                <div class="btn-acao">
+                    <button type="submit" class="btn-save">Salvar</button>
+                    <button type="button" class="btn-cancel" onclick="fecharModalCliente()">Cancelar</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <div id="modalEquipamento" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalEquipamento()">&times;</span>
+            <h2>Cadastro rápido de novo equipamento</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="brand">Marca</label>
+                    <input type="text" id="marca" name="marca" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="model">Modelo</label>
+                    <input type="text" id="model" name="model" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="serial">Número de Série</label>
+                    <input type="text" id="serial" name="serial" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="additional-info">Informações adicionais</label>
+                    <textarea id="additional-info" name="additional-info"></textarea>
+                </div>
+        
+                <div class="btn-acao">
+                    <button type="submit" class="btn-save">Salvar</button>
+                    <button type="button" class="btn-cancel" onclick="fecharModalEquipamento()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalServicos" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalServicos()">&times;</span>
+            <h2>Cadastro rápido de novo serviço</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Código (deixe em branco para gerar automaticamente)</label>
+                    <input type="text" id="name" name="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="brand">Preço</label>
+                    <input type="text" id="marca" name="marca" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="model">Custo</label>
+                    <input type="text" id="model" name="model" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="additional-info">Informações adicionais</label>
+                    <textarea id="additional-info" name="additional-info"></textarea>
+                </div>
+        
+                <div class="btn-acao">
+                    <button type="submit" class="btn-save">Salvar</button>
+                    <button type="button" class="btn-cancel" onclick="fecharModalServicos()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalFuncionarios" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalFuncionarios()">&times;</span>
+            <h2>Cadastro rapido de novo funcionário</h2>
+            <form>
+                <div class="form-type">
+                    <label class="custom-radio">
+                        <input type="radio" name="example" value="feminino">
+                        <span>Feminino</span>
+                    </label>
+                    
+                    <label class="custom-radio">
+                        <input type="radio" name="example" value="masculino">
+                        <span>Masculino</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="brand">Telefone</label>
+                    <input type="tel" id="tel" name="tel" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="serial">CPF</label>
+                    <input type="text" id="cpf" name="cpf" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="model">Cargo</label>
+                    <input type="text" id="cargo" name="cargo" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <textarea id="endereco" name="endereco"></textarea>
+                </div>
+        
+                <div class="btn-acao">
+                    <button type="submit" class="btn-save">Salvar</button>
+                    <button type="button" class="btn-cancel" onclick="fecharModalCliente()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Funções para abrir e fechar os modais
+        function abrirModalCliente() {
+            document.getElementById("modalCliente").style.display = "block";
+        }
+
+        function fecharModalCliente() {
+            document.getElementById("modalCliente").style.display = "none";
+        }
+
+        function abrirModalEquipamento() {
+            document.getElementById("modalEquipamento").style.display = "block";
+        }
+
+        function fecharModalEquipamento() {
+            document.getElementById("modalEquipamento").style.display = "none";
+        }
+
+        function abrirModalServicos() {
+            document.getElementById("modalServicos").style.display = "block";
+        }
+
+        function fecharModalServicos() {
+            document.getElementById("modalServicos").style.display = "none";
+        }
+
+        function abrirModalFuncionarios() {
+            document.getElementById("modalFuncionarios").style.display = "block";
+        }
+
+        function fecharModalFuncionarios() {
+            document.getElementById("modalFuncionarios").style.display = "none";
+        }
+
+        // Adiciona a funcionalidade de fechar os modais ao clicar no botão "x"
+        var span = document.getElementsByClassName("close");
+        var modals = document.getElementsByClassName("modal");
+        for (var i = 0; i < span.length; i++) {
+            span[i].onclick = function() {
+                for (var j = 0; j < modals.length; j++) {
+                    modals[j].style.display = "none";
+                }
+            }
+        }
+
+        // Adiciona a funcionalidade de fechar os modais ao clicar fora deles
+        window.onclick = function(event) {
+            for (var i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html> 

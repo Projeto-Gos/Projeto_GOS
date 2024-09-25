@@ -1,0 +1,283 @@
+section{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.form-container {
+    max-width: 1200px;
+    height: 700px;
+    background-color: var(--white-flor);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    padding: 15px;
+    border-radius: 20px;
+    flex: 1;
+    right: 20%;
+}
+
+h1 {
+    font-size: 28px;
+    color: var(--coral);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+#form-box{
+    display: flex;
+    align-items: start;
+    flex-direction: row-reverse;
+    gap: 20px;
+}
+
+
+/*ESTILIZAÇÃO LADO-A-LADO*/
+.box-data, .box-equipamento,.box-servico, .box-titulo_status, .box-cliente, .box-funcionario{
+    display: flex;
+    align-items: start;
+    width: 100%;
+    gap: 5px;
+}
+
+.box-preco {
+    flex: 1;
+}
+.titulo,
+.status,
+.data-inicial,
+.data-final{
+    flex: 1;
+    margin-right: 20px; /* Espaço entre os itens */
+}
+/* Remover a margem do último item */
+.status,
+.data-final,
+.box-equipamento{
+    margin-right: 0;
+}
+
+/* Definição dos campos */
+.form-group input[type="text"], input[type="number"], input[type="date"], select{
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+    
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    resize: vertical;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* BOTÕES */ 
+.abrir-modal button{
+    background: transparent;
+    border: 1px solid var(--coral);
+    color: var(--coral);
+    font-weight: 600;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.abrir-modal button:hover{
+    background: var(--coral);
+}
+
+.abrir-modal button i:hover{
+    color: var(--black-passas);
+}
+
+.btn-save {
+    background-color: var(--coral);
+    color: var(--black-passas);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-save:hover {
+    background-color: var(--prata);
+    color: var(--black-passas);
+}
+
+
+
+/* MODAIS */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: var(--white-flor);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--coral);
+    font-size: 25px;
+}
+
+.modal-content .form-group {
+    margin-bottom: 15px;
+}
+
+.modal-content .form-group label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.modal-content .form-group input[type="text"],
+.modal-content .form-group input[type="tel"],
+.modal-content .form-group input[type="email"],
+.modal-content .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background:transparent;
+}
+
+.modal-content .btn-save {
+    background-color: var(--coral);
+    color: var(--black-passas);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content .btn-save:hover {
+    background-color: var(--prata);
+    color: var(--black-passas);
+}
+
+.modal-content .btn-cancel {
+    background-color: #ccc;
+    color: var(--black-passas);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content .btn-cancel:hover {
+    background-color: #aaa;
+    color: var(--black-passas);
+}
+
+.btn-acao{
+    display: flex;
+    width: 100%;
+    gap: 18px;
+}
+
+.form-type{
+    display: flex;
+    gap: 50px;
+    font-size: 16px ;
+    margin-bottom: 15px;
+    justify-content: center ;
+}
+.custom-radio {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+
+
+/*PESSOA FÍSICA E JURÍDICA*/
+.custom-radio input { 
+        display: none;
+}
+    
+.custom-radio span:before { 
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--coral);  
+    border-radius: 50%;  
+    margin-right: 8px;
+    background-color: var(--white-flor);
+    transition: background-color 0.3s ease;
+}
+    
+.custom-radio input:checked + span:before {
+    background-color: var(--coral); 
+    border-color: var(--coral); 
+}
