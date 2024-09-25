@@ -5,7 +5,7 @@ if (!defined('DB_CONFIG')) {
         'host' => 'localhost',
         'dbname' => 'new_projetoGOS',
         'user' => 'root',
-        'pass' => 'ruan0312'
+        'pass' => 'bdjmf'
     ]);
 }
 
